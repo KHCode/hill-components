@@ -1,16 +1,20 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'hill-navbar',
-  styleUrl: 'hill-navbar.css',
+  styleUrl: 'hill-navbar.scss',
   shadow: true,
 })
 export class HillNavbar {
+  @Prop() bgColor;
 
+  
   render() {
     return (
       <Host>
-        <slot></slot>
+        <div id="hill-navbar">
+
+        </div>
       </Host>
     );
   }
