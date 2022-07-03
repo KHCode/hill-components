@@ -19,15 +19,9 @@ export class HillNavbar {
         <nav id="hill-navbar">
           <div id="hill-navbar__home"><a href={`${this.homeLinkUrl}`}><img class="home-img" src={`${this.homeLinkImageUrl}`} /><span class="home-name">{this.homeLinkText}</span></a></div>
           <div class="hill-navbar__list-wrapper">
-            <ul>
-                {this.menuList.map(text => <li id={`hill-navbar__${text}`}><a href={`/${text}`}>{text}</a></li>)}
+            <ul id="hill-navbar__list">
+                {this.menuList.map(text => <li class="list-item" id={`hill-navbar__${text.toLowerCase()}`}><a href={`/${text.toLowerCase()}`}>{text}</a></li>)}
             </ul>
-            
-            {/* <ul class="hill-navbar__list">
-              <li class="hill-navbar__about"><a href="/about">About</a></li>
-              <li class="hill-navbar__portfolio"><a href="/portfolio">Projects</a></li>
-              <li class="hill-navbar__blog"><a href="https://blog.kris-hill.com">Blog</a></li>
-            </ul> */}
           </div>
         </nav>
       </Host>
