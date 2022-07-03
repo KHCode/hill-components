@@ -8,6 +8,10 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface HillNavbar {
         "bgColor": any;
+        "homeLinkImageUrl": string;
+        "homeLinkText": string;
+        "homeLinkUrl": string;
+        "menuList": Array<string>;
     }
     interface MyComponent {
         /**
@@ -45,6 +49,10 @@ declare global {
 declare namespace LocalJSX {
     interface HillNavbar {
         "bgColor"?: any;
+        "homeLinkImageUrl"?: string;
+        "homeLinkText"?: string;
+        "homeLinkUrl"?: string;
+        "menuList"?: Array<string>;
     }
     interface MyComponent {
         /**
