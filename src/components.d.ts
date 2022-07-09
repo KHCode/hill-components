@@ -8,9 +8,11 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface HillNavbar {
         "bgColor": any;
+        "hasRoundedCorners": boolean;
         "homeLinkImageUrl": string;
         "homeLinkText": string;
         "homeLinkUrl": string;
+        "isNightMode": boolean;
         "menuList": Array<string>;
     }
     interface MyComponent {
@@ -49,9 +51,11 @@ declare global {
 declare namespace LocalJSX {
     interface HillNavbar {
         "bgColor"?: any;
+        "hasRoundedCorners"?: boolean;
         "homeLinkImageUrl"?: string;
         "homeLinkText"?: string;
         "homeLinkUrl"?: string;
+        "isNightMode"?: boolean;
         "menuList"?: Array<string>;
     }
     interface MyComponent {
