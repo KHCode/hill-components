@@ -8,16 +8,19 @@ a{
 }
 
 #hill-navbar{
+  position: absolute;
+  top: 0;
   font-size: 2.5rem;
   color: #353535;
   height: 100px;
-  display: flex;
+  margin: 10px;
   justify-content: space-around;
   align-items: center;
 }
 
 #hill-navbar__home{
-  flex: 1.5;
+  position: absolute;
+  left: 0;
   display: flex;
   align-items: baseline;
   column-gap: 10px;
@@ -41,11 +44,28 @@ a{
 }
 
 #hill-navbar__list-wrapper{
-  flex: 1;
+  position: absolute;
+  right: 0;
 }
 
-#list-burger{
-  display: block;
+.line-1, .line-2, .line-3 {
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  width: 32px;
+  height: 3px;
+  background-color: black;
+  transition: all 400ms cubic-bezier(.84,.06,.52,1.8);
+}
+
+.line-1 {
+  transform: translateY(-8px);
+  animation-delay: 100ms;
+}
+
+.line-3 {
+  transform: translateY(8px);
+  animation-delay: 250ms;
 }
 
 #list-menu{

@@ -19,22 +19,23 @@ export class HillNavbar {
     return (
       <Host>
         <nav id="hill-navbar">
-          <div id="hill-navbar__home">
+          {/* <div id="hill-navbar__home">
             <div id="home-img-wrapper">
               <img id="home-img" src={this.homeLinkImageUrl} />
             </div>
             <a id="home-name" href={this.homeLinkUrl}>{this.homeLinkText}</a>
+          </div> */}
+          <div class="list-toggle">
+            <div class="line-1"></div>
+            <div class="line-2"></div>
+            <div class="line-3"></div>
           </div>
-          <div id="hill-navbar__list-wrapper">
-            <svg id="list-burger" viewBox='0 0 65 40'>
-              <line x1="0" y1="0" x2="65" y2="0" stroke="black"></line>
-              <line x1="0" y1="18" x2="65" y2="18" stroke="red"></line>
-              <line x1="0" y1="36" x2="65" y2="36" stroke="green"></line>
-            </svg>
-            <ul id="list-menu">
-                {this.menuList.map(text => <li class="list-item" id={`hill-navbar__${text.toLowerCase()}`}><a href={`/${text.toLowerCase()}`}>{text}</a></li>)}
-            </ul>
-          </div>
+          <ul id="list-menu">
+              {this.menuList.map(text => <li class="list-item" id={`hill-navbar__${text.toLowerCase()}`}><a href={`/${text.toLowerCase()}`}>{text}</a></li>)}
+          </ul>
+          {/* <div id="hill-navbar__list-wrapper">
+            
+          </div> */}
         </nav>
       </Host>
     );
