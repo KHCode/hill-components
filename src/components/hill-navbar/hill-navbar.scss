@@ -16,7 +16,7 @@ a{
   font-size: 2.5rem;
   color: #353535;
   width: 100vw;
-  height: 100px;
+  height: 100%;
   justify-content: space-around;
   align-items: center;
 }
@@ -98,9 +98,9 @@ a{
   opacity: 0;
 }
 
-#list-menu{
-  visibility: hidden;
-}
+// #list-menu{
+//   visibility: hidden;
+// }
 // #list-menu{
 //   display: flex;
 //   list-style: none;
@@ -111,9 +111,8 @@ a{
 // }
 #list-menu{
   background: #0288D1;
-  position: absolute;
+  float: right;
   top: 0;
-  left: 0;
   height: 100%;
   width: 0%;
   z-index: 10;
@@ -126,7 +125,15 @@ a{
   margin: 0;
   position: absolute;
   top: 30%;
-  left: 40%;
+}
+
+#list-menu ul li {
+  list-style: none;
+  font-size: 24px;
+  color: #fff;
+  line-height: 2.2;
+  text-transform: uppercase;
+  letter-spacing: 1.7px;
 }
 
 #list-menu.show {
