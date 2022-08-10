@@ -15,9 +15,9 @@ export class HillNavbar {
   @Prop() isNightMode: boolean = false;
   homeImg: string = "src\assets\pexels-emiliano-arano-2127969.jpg";
   listToggle: HTMLDivElement;
-  icon1: HTMLDivElement;
-  icon2: HTMLDivElement;
-  icon3: HTMLDivElement;
+  line1: HTMLDivElement;
+  line2: HTMLDivElement;
+  line3: HTMLDivElement;
   listMenu: HTMLDivElement;
   // blue: Element;
   // componentWillLoad() {
@@ -31,9 +31,9 @@ export class HillNavbar {
 
   menuToggleClicked(event: Event) {
     event.preventDefault();
-    this.icon1.classList.toggle('a');
-    this.icon2.classList.toggle('c');
-    this.icon3.classList.toggle('b');
+    this.line1.classList.toggle('a');
+    this.line2.classList.toggle('c');
+    this.line3.classList.toggle('b');
     this.listMenu.classList.toggle('show');
     // this.blue.classList.toggle('slide');
   }
@@ -49,9 +49,9 @@ export class HillNavbar {
             <a id="home-name" href={this.homeLinkUrl}>{this.homeLinkText}</a>
           </div> */}
           <div class="list-toggle" id="icon"  onClick={(ev) => this.menuToggleClicked(ev)} ref={(el) => this.listToggle = el as HTMLDivElement}>
-            <div class="line-1" id="a" ref={(el) => this.icon1 = el as HTMLDivElement}></div>
-            <div class="line-2" id="b" ref={(el) => this.icon2 = el as HTMLDivElement}></div>
-            <div class="line-3" id="c" ref={(el) => this.icon3 = el as HTMLDivElement}></div>
+            <div class="line-1" id="a" ref={(el) => this.line1 = el as HTMLDivElement}></div>
+            <div class="line-2" id="b" ref={(el) => this.line2 = el as HTMLDivElement}></div>
+            <div class="line-3" id="c" ref={(el) => this.line3 = el as HTMLDivElement}></div>
           </div>
           <div id="list-menu" ref={(el) => this.listMenu = el as HTMLDivElement}>
             <ul>
