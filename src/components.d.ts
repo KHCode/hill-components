@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface HillCard {
+    }
     interface HillNavbar {
         "bgColor": any;
     }
@@ -25,6 +27,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLHillCardElement extends Components.HillCard, HTMLStencilElement {
+    }
+    var HTMLHillCardElement: {
+        prototype: HTMLHillCardElement;
+        new (): HTMLHillCardElement;
+    };
     interface HTMLHillNavbarElement extends Components.HillNavbar, HTMLStencilElement {
     }
     var HTMLHillNavbarElement: {
@@ -38,11 +46,14 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "hill-card": HTMLHillCardElement;
         "hill-navbar": HTMLHillNavbarElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface HillCard {
+    }
     interface HillNavbar {
         "bgColor"?: any;
     }
@@ -61,6 +72,7 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "hill-card": HillCard;
         "hill-navbar": HillNavbar;
         "my-component": MyComponent;
     }
@@ -69,6 +81,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "hill-card": LocalJSX.HillCard & JSXBase.HTMLAttributes<HTMLHillCardElement>;
             "hill-navbar": LocalJSX.HillNavbar & JSXBase.HTMLAttributes<HTMLHillNavbarElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
