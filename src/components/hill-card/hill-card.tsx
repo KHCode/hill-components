@@ -7,6 +7,16 @@ import { Component, Host, h } from '@stencil/core';
 })
 export class HillCard {
 
+  moreInfo: HTMLDivElement;
+  detailsList: HTMLDivElement;
+
+  handleClick = (event: Event) => {
+    event.preventDefault();
+    
+    this.detailsList.style.display = "block";
+    this.moreInfo.style.transform = "rotate(180deg)"
+  }
+
   render() {
     return (
       <Host>
@@ -19,13 +29,14 @@ export class HillCard {
               <div id="card-title">Lumavate</div>
             </div>
             <div id="card-text"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div>
-            <div id="card-list">
+            <div id="card-list" ref={el => this.detailsList = el as HTMLDivElement}>
               <ul>
                 <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
                 <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
                 <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
               </ul>
             </div>
+            <div id="card-more" onClick={this.handleClick} ref={el => this.moreInfo = el as HTMLDivElement}><img src="./assets/iconmonstr-caret-down-lined.svg"></img></div>
           </div>
           <div id="card-bonus">
             <ul>

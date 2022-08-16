@@ -38,7 +38,9 @@ ul{
 }
 
 #avatar-image {
-
+  display: block;
+  margin: auto;
+  width: 100%;
 }
 
 #card-title {
@@ -52,8 +54,14 @@ ul{
   text-align: justify;
 }
 
+#card-more {
+  width: 60px;
+  align-self: center;
+}
+
 #card-list {
   padding: 5px 5px 5px 20px;
+  display: none;
 }
 
 #card-list ul {
