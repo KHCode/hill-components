@@ -9,12 +9,18 @@ export class HillCard {
 
   moreInfo: HTMLDivElement;
   detailsList: HTMLDivElement;
+  detailsOpen: boolean = false;
 
   handleClick = (event: Event) => {
     event.preventDefault();
-    
-    this.detailsList.style.display = "block";
-    this.moreInfo.style.transform = "rotate(180deg)"
+    this.detailsOpen = !this.detailsOpen;
+    if(this.detailsOpen){
+      this.detailsList.style.display = "block";
+      this.moreInfo.style.transform = "rotate(180deg)";
+    }else{
+      this.detailsList.style.display = "none";
+      this.moreInfo.style.transform = "none";
+    }
   }
 
   render() {
