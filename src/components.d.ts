@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface HillCard {
+        "details": string;
     }
     interface HillNavbar {
         "bgColor": any;
@@ -53,6 +54,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface HillCard {
+        "details"?: string;
     }
     interface HillNavbar {
         "bgColor"?: any;

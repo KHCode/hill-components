@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, Prop, Watch, State } from '@stencil/core';
 
 @Component({
   tag: 'hill-card',
@@ -10,6 +10,17 @@ export class HillCard {
   moreInfo: HTMLDivElement;
   detailsList: HTMLDivElement;
   detailsOpen: boolean = false;
+  @Prop() details: string;
+  @State() detailsArray: Array<string>;
+
+  @Watch('details')
+  parseDetails(){
+    this.detailsArray = this.details ? JSON.parse(this.details) : [];
+  }
+
+  componentWillLoad(){
+    this.parseDetails();
+  }
 
   handleClick = (event: Event) => {
     event.preventDefault();
@@ -27,7 +38,35 @@ export class HillCard {
     }
   }
 
-  
+  getListItemStyle = (itemNum) => {
+    let delay = itemNum*.7;
+    return {
+      animationName: "fade-in",
+      animationDuration: '1.3s',
+      animationFillMode: 'backwards',
+      animationDelay: `${delay}s`
+    }
+  }
+
+  getDetailsList = () => {
+    //check that the details array is not empty
+    //open an unordered list tag **TODO: create property to select either <ul> or <ol>**
+    //for each element of the details array:
+      //put the element inside a list element
+
+    
+    return(
+      <ul>
+        {this.detailsArray?.map((deet, index) => {
+          return (<li 
+                  style={this.getListItemStyle(index)}
+                  key={index}>
+                    {deet}
+                  </li>)
+        })}
+      </ul>
+    )
+  }
 
   render() {
     return (
@@ -42,11 +81,7 @@ export class HillCard {
             </div>
             <div id="card-text"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div>
             <div id="card-list" ref={el => this.detailsList = el as HTMLDivElement}>
-              <ul>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              </ul>
+              {this.getDetailsList()}
             </div>
             <div id="card-more" onClick={this.handleClick} ref={el => this.moreInfo = el as HTMLDivElement}><img src="./assets/iconmonstr-caret-down-lined.svg"></img></div>
           </div>
