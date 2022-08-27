@@ -50,18 +50,61 @@ ul{
 }
 
 #card-text {
-  padding: 5px 5px 5px 20px;
+  padding: 5px 20px;
   text-align: justify;
 }
 
 #card-more {
   width: 60px;
   align-self: center;
+  transition: transform 0.25s 0.2s;
+  /* transition-duration: 0.2s; */
+  /* transition-delay: 0.3s; */
+}
+
+/* #card-more:active {
+  animation-name: fade-in-out;
+  animation-duration: 1s;
+} */
+
+#card-more.fade-open {
+  transform: rotate(180deg);
+  animation-name: fade-out;
+  animation-iteration-count: 2;
+  animation-duration: 0.3s;
+  animation-direction: alternate;
+  animation-fill-mode: backwards;
+  animation-timing-function: ease-out;
+}
+
+#card-more.fade-close {
+  transform: none;
+  animation-name: fade-out-close;
+  animation-iteration-count: 2;
+  animation-duration: 0.3s;
+  animation-direction: alternate;
+  animation-timing-function: ease-out;
+  /* animation-fill-mode: backwards; */
 }
 
 #card-list {
   padding: 5px 5px 5px 20px;
   display: none;
+  transition: display 1s 0.3s;
+}
+
+#card-list.open {
+  display: block;
+  animation-name: fade-in;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
+}
+
+#card-list.close {
+  display: none;
+  animation-name: fade-out;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
 }
 
 #card-list ul {
@@ -72,6 +115,69 @@ ul{
   padding-bottom: 5px;
 }
 
-#card-bonus {
+/* #card-list li.fade {
+  animation-name: fade-in-out;
+  animation-duration: 0.5s;
+} */
 
+#card-bonus {
+  text-transform: uppercase;
+  font-size: 24px;
+  line-height: 40px;
+  padding: 0 10px;
+}
+
+#card-bonus ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#card-bonus li {
+  display: block;
+}
+
+
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  /* 50% {
+    opacity: 0;
+  } */
+  100%{
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out-close {
+  0% {
+    opacity: 1;
+  }
+  /* 50% {
+    opacity: 0;
+  } */
+  100%{
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-out {
+  0%, 100% {
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
 }

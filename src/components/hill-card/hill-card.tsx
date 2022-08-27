@@ -15,13 +15,19 @@ export class HillCard {
     event.preventDefault();
     this.detailsOpen = !this.detailsOpen;
     if(this.detailsOpen){
-      this.detailsList.style.display = "block";
-      this.moreInfo.style.transform = "rotate(180deg)";
+      this.detailsList.classList.remove("close");
+      this.detailsList.classList.add("open");
+      this.moreInfo.classList.remove("fade-close");
+      this.moreInfo.classList.add("fade-open");
     }else{
-      this.detailsList.style.display = "none";
-      this.moreInfo.style.transform = "none";
+      this.detailsList.classList.toggle("open");
+      this.detailsList.classList.toggle("close");
+      this.moreInfo.classList.toggle("fade-open");
+      this.moreInfo.classList.toggle("fade-close");
     }
   }
+
+  
 
   render() {
     return (
