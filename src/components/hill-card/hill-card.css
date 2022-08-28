@@ -88,9 +88,9 @@ ul{
 }
 
 #card-list {
-  padding: 5px 5px 5px 20px;
+  padding: 5px 5px 5px 40px;
   display: none;
-  transition: display 1s 0.3s;
+  transition: display 1s 2s;
 }
 
 #card-list.open {
@@ -101,10 +101,11 @@ ul{
 }
 
 #card-list.close {
-  display: none;
+  /* display: none; */
   animation-name: fade-out;
   animation-duration: 1s;
-  animation-fill-mode: backwards;
+  /* animation-delay: 2s; */
+  /* animation-fill-mode: backwards; */
 }
 
 #card-list ul {
@@ -114,6 +115,10 @@ ul{
 #card-list li {
   padding-bottom: 5px;
 }
+
+/* #card-list li. {
+  padding-bottom: 5px;
+} */
 
 /* #card-list li.fade {
   animation-name: fade-in-out;
@@ -149,6 +154,7 @@ ul{
   } */
   100%{
     opacity: 0;
+    display: none;
   }
 }
 

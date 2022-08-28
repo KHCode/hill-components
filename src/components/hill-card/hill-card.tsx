@@ -7,24 +7,36 @@ import { Component, Host, h, Prop, Watch, State } from '@stencil/core';
 })
 export class HillCard {
 
+  @Prop() headlineText: string;
+  @Prop() bodyText: string;
+  @Prop() details: string;
+  @State() detailsArray: Array<string>;
+  @Prop() bonusDetails: string;
+  @State() bonusDetailsArray: Array<string>;
   moreInfo: HTMLDivElement;
   detailsList: HTMLDivElement;
   detailsOpen: boolean = false;
-  @Prop() details: string;
-  @State() detailsArray: Array<string>;
+  detailsClose: boolean = true;
 
   @Watch('details')
   parseDetails(){
     this.detailsArray = this.details ? JSON.parse(this.details) : [];
   }
 
+  @Watch('bonusDetails')
+  parseBonusDetails(){
+    this.bonusDetailsArray = this.bonusDetails ? JSON.parse(this.bonusDetails) : [];
+  }
+
   componentWillLoad(){
     this.parseDetails();
+    this.parseBonusDetails();
   }
 
   handleClick = (event: Event) => {
     event.preventDefault();
     this.detailsOpen = !this.detailsOpen;
+    this.detailsClose = !this.detailsClose;
     if(this.detailsOpen){
       this.detailsList.classList.remove("close");
       this.detailsList.classList.add("open");
@@ -38,30 +50,49 @@ export class HillCard {
     }
   }
 
-  getListItemStyle = (itemNum) => {
-    let delay = itemNum*.7;
-    return {
-      animationName: "fade-in",
-      animationDuration: '1.3s',
-      animationFillMode: 'backwards',
-      animationDelay: `${delay}s`
+  getListItemStyle = (itemNum: number) => {
+    let delay: number;
+    if(this.detailsOpen){
+      delay = itemNum*.9;
+      return {
+        animationName: "fade-in",
+        animationDuration: "2s",
+        animationFillMode: "backwards",
+        animationDelay: `${delay}s`,
+        animationDirection: "normal"
+      }
     }
+    // else{
+    //   delay = 3/itemNum;
+    //   return {
+    //     animationName: "fade-out",
+    //     animationDuration: "2s",
+    //     animationDelay: `${delay}s`,
+    //     animationDirection: "normal"
+    //   }
+    // }
+    
   }
 
   getDetailsList = () => {
-    //check that the details array is not empty
-    //open an unordered list tag **TODO: create property to select either <ul> or <ol>**
-    //for each element of the details array:
-      //put the element inside a list element
-
-    
+    //**TODO: create property to select either <ul> or <ol>**
     return(
       <ul>
         {this.detailsArray?.map((deet, index) => {
-          return (<li 
-                  style={this.getListItemStyle(index)}
-                  key={index}>
+          return (<li style={this.getListItemStyle(index)} key={index}>
                     {deet}
+                  </li>)
+        })}
+      </ul>
+    )
+  }
+
+  getBonusDetailsList = () => {
+    return (
+      <ul>
+        {this.bonusDetailsArray?.map((bonusDeet, index) => {
+          return (<li key={index}>
+                    {bonusDeet}
                   </li>)
         })}
       </ul>
@@ -77,25 +108,16 @@ export class HillCard {
               <div id="card-avatar">
                 <img id="avatar-image" src="https://picsum.photos/200"></img>
               </div>
-              <div id="card-title">Lumavate</div>
+              <div id="card-title">{this.headlineText}</div>
             </div>
-            <div id="card-text"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div>
+            <div id="card-text"><span>{this.bodyText}</span></div>
             <div id="card-list" ref={el => this.detailsList = el as HTMLDivElement}>
               {this.getDetailsList()}
             </div>
             <div id="card-more" onClick={this.handleClick} ref={el => this.moreInfo = el as HTMLDivElement}><img src="./assets/iconmonstr-caret-down-lined.svg"></img></div>
           </div>
           <div id="card-bonus">
-            <ul>
-              <li>Javascript</li>
-              <li>Jira</li>
-              <li>Linux</li>
-              <li>Github</li>
-              <li>Python</li>
-              <li>HTML</li>
-              <li>StencilJS</li>
-              <li>Sass</li>
-            </ul>
+            {this.getBonusDetailsList()}
           </div>
         </div>
       </Host>
@@ -103,3 +125,4 @@ export class HillCard {
   }
 
 }
+/**/
