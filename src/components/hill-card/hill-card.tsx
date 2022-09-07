@@ -9,11 +9,12 @@ export class HillCard {
 
   @Prop() headlineText: string;
   @Prop() bodyText: string;
+  @Prop() imgSource: string;
   @Prop() details: string;
   @State() detailsArray: Array<string>;
   @Prop() bonusDetails: string;
   @State() bonusDetailsArray: Array<string>;
-  moreInfo: HTMLDivElement;
+  moreInfo: HTMLButtonElement;
   detailsList: HTMLDivElement;
   detailsOpen: boolean = false;
   detailsClose: boolean = true;
@@ -106,7 +107,7 @@ export class HillCard {
           <div id="card-main">            
             <div id="card-banner">
               <div id="card-avatar">
-                <img id="avatar-image" src="https://picsum.photos/200"></img>
+                <img id="avatar-image" src={this.imgSource}></img>
               </div>
               <div id="card-title">{this.headlineText}</div>
             </div>
@@ -114,7 +115,7 @@ export class HillCard {
             <div id="card-list" ref={el => this.detailsList = el as HTMLDivElement}>
               {this.getDetailsList()}
             </div>
-            <div id="card-more" onClick={this.handleClick} ref={el => this.moreInfo = el as HTMLDivElement}><img src="./assets/iconmonstr-caret-down-lined.svg"></img></div>
+            <button id="card-more" onClick={this.handleClick} ref={el => this.moreInfo = el as HTMLButtonElement}><img src="./assets/iconmonstr-caret-down-lined.svg"></img></button>
           </div>
           <div id="card-bonus">
             {this.getBonusDetailsList()}

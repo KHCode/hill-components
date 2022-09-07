@@ -57,34 +57,37 @@ ul{
 #card-more {
   width: 60px;
   align-self: center;
-  transition: transform 0.25s 0.2s;
+  border: none;
+  background: none;
   /* transition-duration: 0.2s; */
   /* transition-delay: 0.3s; */
 }
 
-/* #card-more:active {
-  animation-name: fade-in-out;
-  animation-duration: 1s;
-} */
+#card-more:hover {
+  transform: scale(1.2);
+}
 
 #card-more.fade-open {
-  transform: rotate(180deg);
-  animation-name: fade-out;
+  /* transform: rotate(180deg); */
+  /* animation-name: fade-out;
   animation-iteration-count: 2;
   animation-duration: 0.3s;
   animation-direction: alternate;
   animation-fill-mode: backwards;
-  animation-timing-function: ease-out;
+  animation-timing-function: ease-out; */
+  animation: dropdown 0s 0.3s ease-out forwards,
+             fade-out 0.3s 2 alternate ease-out;
 }
 
 #card-more.fade-close {
   transform: none;
-  animation-name: fade-out-close;
+  /* animation-name: fade-out-close;
   animation-iteration-count: 2;
   animation-duration: 0.3s;
   animation-direction: alternate;
-  animation-timing-function: ease-out;
-  /* animation-fill-mode: backwards; */
+  animation-timing-function: ease-out; */
+  animation: fade-out-close 0.3s 2 alternate ease-out;
+             
 }
 
 #card-list {
@@ -94,10 +97,11 @@ ul{
 }
 
 #card-list.open {
+  animation: fade-in 1s forwards;
   display: block;
-  animation-name: fade-in;
+  /*animation-name: fade-in;
   animation-duration: 1s;
-  animation-fill-mode: backwards;
+  animation-fill-mode: backwards; */
 }
 
 #card-list.close {
@@ -109,11 +113,12 @@ ul{
 }
 
 #card-list ul {
-  list-style-type: circle;
+  list-style-type: none;
+  padding-top: 10px;
 }
 
 #card-list li {
-  padding-bottom: 5px;
+  padding-bottom: 25px;
 }
 
 /* #card-list li. {
@@ -143,15 +148,25 @@ ul{
   display: block;
 }
 
-
+@keyframes dropdown {
+  0% {
+    transform: translateY(-15px);
+  }
+  15%{
+    transform: translateY(0px) rotate(180deg)
+  }
+  100% {
+    transform: translateY(0px) rotate(180deg);
+  }
+}
 
 @keyframes fade-out {
   0% {
     opacity: 1;
   }
-  /* 50% {
+  50% {
     opacity: 0;
-  } */
+  }
   100%{
     opacity: 0;
     display: none;
@@ -173,8 +188,14 @@ ul{
 @keyframes fade-in {
   0% {
     opacity: 0;
+    transform: scale(0);
+  }
+  90%{
+    transform: scale(1);
+    opacity: 0;
   }
   100%{
+    transform: scale(1);
     opacity: 1;
   }
 }

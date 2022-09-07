@@ -11,6 +11,7 @@ export namespace Components {
         "bonusDetails": string;
         "details": string;
         "headlineText": string;
+        "imgSource": string;
     }
     interface HillNavbar {
         "bgColor": any;
@@ -61,6 +62,7 @@ declare namespace LocalJSX {
         "bonusDetails"?: string;
         "details"?: string;
         "headlineText"?: string;
+        "imgSource"?: string;
     }
     interface HillNavbar {
         "bgColor"?: any;
